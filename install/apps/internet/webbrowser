@@ -17,6 +17,7 @@ options+=("midori" "(GTK)" off)
 options+=("falkon" "(QT)" off)
 options+=("vivaldi" "(AUR) (GTK)" off)
 options+=("vivaldi-ffmpeg-codecs" "(AUR) Non-free codecs" off)
+options+=("ungoogled-chromium (AUR)" off)
 
 sel=$(whiptail --backtitle "$apptitle" --title "Web Browser applications :" --checklist "Choose what you want" --cancel-button "Back" 0 0 0 \
   "${options[@]}" \
@@ -33,6 +34,7 @@ for itm in $sel; do
     '"vivaldi-ffmpeg-codecs"') aurpkg="$aurpkg $(echo $itm | sed 's/"//g')";;
     '"firefox-i18n"' | \
     '"seamonkey-i18n"') pkg="$pkg";;
+    '"ungoogled-chromium"' | \
     *) pkg="$pkg $(echo $itm | sed 's/"//g')";;
   esac
 done
